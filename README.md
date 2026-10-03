@@ -2,7 +2,7 @@
 
 Spark SQL pipeline and Tableau dashboard for engagement, conversion, and retention reporting on **4.3M real GA4 ecommerce events** from the Google Merchandise Store, with a root-cause analysis of a 53% post-holiday conversion decline that is **replicated on an independent year of data**.
 
-<img src="images/Dashboard.png" alt="Dashboard">
+<img src="images/dashboard.png" alt="Dashboard">
 
 Tableau workbook: [tableau/holiday_conversion_dashboard.twbx](tableau/holiday_conversion_dashboard.twbx)
 

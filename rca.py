@@ -48,6 +48,28 @@ def main():
     print("\nPer-segment detail:")
     print(out[["dimension", "segment", "share_b", "share_c", "cvr_b", "cvr_c",
                "mix_effect", "rate_effect"]].round(4).to_string(index=False))
+
+    # Where in the funnel did the change happen? Step-to-step rates per period.
+    spark.read.parquet("data/gold/fct_funnel_daily").createOrReplaceTempView("fct_funnel_daily")
+    steps = spark.sql(f"""
+        WITH p AS (
+          SELECT CASE WHEN session_date BETWEEN DATE'{args.baseline[0]}' AND DATE'{args.baseline[1]}' THEN 'baseline'
+                      WHEN session_date BETWEEN DATE'{args.comparison[0]}' AND DATE'{args.comparison[1]}' THEN 'comparison'
+                 END AS period, *
+          FROM fct_funnel_daily
+        )
+        SELECT period,
+               SUM(view_item_sessions)   / SUM(sessions)              AS view_rate,
+               SUM(add_to_cart_sessions) / SUM(view_item_sessions)    AS cart_per_view,
+               SUM(checkout_sessions)    / SUM(add_to_cart_sessions)  AS checkout_per_cart,
+               SUM(purchase_sessions)    / SUM(checkout_sessions)     AS purchase_per_checkout
+        FROM p WHERE period IS NOT NULL
+        GROUP BY period ORDER BY period
+    """).toPandas().set_index("period")
+    steps.loc["relative_change"] = steps.loc["comparison"] / steps.loc["baseline"] - 1
+    steps.reset_index().to_csv("tableau/rca_funnel_steps.csv", index=False)
+    print("\nFunnel step rates:")
+    print(steps.round(4).to_string())
     spark.stop()
 
 

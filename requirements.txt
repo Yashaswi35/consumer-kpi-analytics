@@ -1,0 +1,6 @@
+pyspark>=3.5
+pandas<3
+pyarrow
+google-cloud-bigquery
+google-cloud-bigquery-storage
+db-dtypes

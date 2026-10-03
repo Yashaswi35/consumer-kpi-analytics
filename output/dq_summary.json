@@ -1,0 +1,13 @@
+{
+  "raw_rows": 4295584,
+  "null_user_rows": 0,
+  "null_session_rows": 0,
+  "null_device_rows": 0,
+  "redacted_medium_rows": 911399,
+  "clean_rows": 4295584,
+  "duplicate_rows_removed": 0,
+  "ga_sessions": 360129,
+  "derived_sessions": 355601,
+  "sessionization_match_rate": 0.9733,
+  "users": 270154
+}

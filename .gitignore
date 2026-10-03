@@ -1,0 +1,11 @@
+data/
+__pycache__/
+.venv/
+*.pyc
+.DS_Store
+tableau/fct_sessions.csv
+tableau/fct_users.csv
+env.sh
+tableau/fct_sessions.csv
+tableau/fct_users.csv
+env.sh

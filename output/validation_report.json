@@ -1,0 +1,74 @@
+[
+  {
+    "level": "ERROR",
+    "check": "events_clean natural key is unique",
+    "violations": 0,
+    "status": "PASS"
+  },
+  {
+    "level": "ERROR",
+    "check": "fct_sessions session_key is unique",
+    "violations": 0,
+    "status": "PASS"
+  },
+  {
+    "level": "ERROR",
+    "check": "session revenue reconciles to event revenue (within $1)",
+    "violations": 0,
+    "status": "PASS"
+  },
+  {
+    "level": "ERROR",
+    "check": "session counts reconcile between fct_sessions and funnel mart",
+    "violations": 0,
+    "status": "PASS"
+  },
+  {
+    "level": "ERROR",
+    "check": "purchase_sessions <= sessions on every funnel row",
+    "violations": 0,
+    "status": "PASS"
+  },
+  {
+    "level": "ERROR",
+    "check": "retention week 0 equals 100%",
+    "violations": 0,
+    "status": "PASS"
+  },
+  {
+    "level": "ERROR",
+    "check": "retention never exceeds 100%",
+    "violations": 0,
+    "status": "PASS"
+  },
+  {
+    "level": "ERROR",
+    "check": "no negative session durations",
+    "violations": 0,
+    "status": "PASS"
+  },
+  {
+    "level": "WARN",
+    "check": "funnel rows where checkouts exceed add_to_cart",
+    "violations": 293,
+    "status": "FLAG"
+  },
+  {
+    "level": "WARN",
+    "check": "purchase sessions with no begin_checkout (orphan purchases)",
+    "violations": 3,
+    "status": "FLAG"
+  },
+  {
+    "level": "WARN",
+    "check": "sessions with unknown device",
+    "violations": 0,
+    "status": "PASS"
+  },
+  {
+    "level": "WARN",
+    "check": "days with event volume > 3 std devs from trailing 14-day mean",
+    "violations": 1,
+    "status": "FLAG"
+  }
+]
